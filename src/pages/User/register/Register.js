@@ -1,16 +1,17 @@
 import {
   Box,
   Button,
+  FilledInput,
   FormControl,
   IconButton,
   InputAdornment,
   InputLabel,
-  Link,
   OutlinedInput,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
+
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import React, { useState } from "react";
@@ -24,19 +25,12 @@ const Register = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
   const handleOnChange = (e) => {
     e.preventDefault();
-
     const { name, value } = e.target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
   };
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    console.log(form);
-  };
+
   return (
     <div>
       {/* <Box
@@ -136,7 +130,142 @@ const Register = () => {
           </Typography>
         </form>
       </Box> */}
-      hello world
+      <Box
+        sx={{
+          backgroundColor: "#e6f0ff	",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          //   paddingBottom: "2rem",
+          height: "70dvh",
+          width: "26rem",
+          margin: " auto",
+          padding: "0 2rem",
+        }}
+      >
+        <Typography
+          variant='h3'
+          className='text-center bg-gradient-to-r from-yellow-300 to-orange-700 bg-clip-text text-transparent flex justify-center'
+        >
+          Welcome To LinkShare
+        </Typography>
+        <form
+          method='post'
+          className='mt-2 w-96'
+        >
+          <Stack
+            direction={"row"}
+            gap={3}
+          >
+            <TextField
+              id='filled-basic'
+              label='Fname'
+              variant='filled'
+              required
+            />
+            <TextField
+              id='filled-basic'
+              label='Lname'
+              variant='filled'
+              required
+              sx={{ width: "15rem" }}
+            />
+          </Stack>
+
+          <TextField
+            id='filled-basic'
+            label='Address'
+            variant='filled'
+            required
+            fullWidth
+            sx={{ marginTop: "1rem" }}
+          />
+
+          <TextField
+            id='filled-basic'
+            label='Number'
+            variant='filled'
+            fullWidth
+            required
+            type='number'
+            sx={{ marginTop: "1rem" }}
+          />
+
+          <TextField
+            id='filled-basic'
+            label='Email'
+            variant='filled'
+            fullWidth
+            required
+            type='email'
+            sx={{ marginTop: "1rem" }}
+          />
+          <Stack
+            direction={"row"}
+            gap={1}
+          >
+            <FormControl
+              sx={{ mt: "1rem", width: "19ch" }}
+              variant='filled'
+            >
+              <InputLabel htmlFor='filled-adornment-password'>
+                Password
+              </InputLabel>
+              <FilledInput
+                id='filled-adornment-password'
+                type={showPassword ? "text" : "password"}
+                endAdornment={
+                  <InputAdornment position='end'>
+                    <IconButton
+                      aria-label='toggle password visibility'
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge='end'
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+            <FormControl
+              sx={{ mt: "1rem", width: "25ch" }}
+              variant='filled'
+            >
+              <InputLabel htmlFor='filled-adornment-password'>
+                Confirm Password
+              </InputLabel>
+              <FilledInput
+                id='filled-adornment-password'
+                type={showPassword ? "text" : "password"}
+                endAdornment={
+                  <InputAdornment position='end'>
+                    <IconButton
+                      aria-label='toggle password visibility'
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge='end'
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+          </Stack>
+
+          <Button
+            variant='contained'
+            sx={{ backgroundColor: "#002966" }}
+            type='submit'
+            sx={{ marginTop: "1rem" }}
+            fullWidth
+          >
+            Login
+          </Button>
+        </form>
+      </Box>
     </div>
   );
 };
