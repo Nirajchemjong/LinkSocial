@@ -29,6 +29,16 @@ const Register = () => {
   const handleOnChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(form);
   };
 
   return (
@@ -153,6 +163,7 @@ const Register = () => {
         <form
           method='post'
           className='mt-2 w-96'
+          onSubmit={handleOnSubmit}
         >
           <Stack
             direction={"row"}
@@ -162,12 +173,16 @@ const Register = () => {
               id='filled-basic'
               label='Fname'
               variant='filled'
+              name='fname'
+              onChange={handleOnChange}
               required
             />
             <TextField
               id='filled-basic'
               label='Lname'
+              name='lname'
               variant='filled'
+              onChange={handleOnChange}
               required
               sx={{ width: "15rem" }}
             />
@@ -176,7 +191,9 @@ const Register = () => {
           <TextField
             id='filled-basic'
             label='Address'
+            name='address'
             variant='filled'
+            onChange={handleOnChange}
             required
             fullWidth
             sx={{ marginTop: "1rem" }}
@@ -185,7 +202,9 @@ const Register = () => {
           <TextField
             id='filled-basic'
             label='Number'
+            name='number'
             variant='filled'
+            onChange={handleOnChange}
             fullWidth
             required
             type='number'
@@ -195,10 +214,12 @@ const Register = () => {
           <TextField
             id='filled-basic'
             label='Email'
+            name='email'
             variant='filled'
             fullWidth
             required
             type='email'
+            onChange={handleOnChange}
             sx={{ marginTop: "1rem" }}
           />
           <Stack
@@ -215,6 +236,8 @@ const Register = () => {
               <FilledInput
                 id='filled-adornment-password'
                 type={showPassword ? "text" : "password"}
+                name='password'
+                onChange={handleOnChange}
                 endAdornment={
                   <InputAdornment position='end'>
                     <IconButton
@@ -239,6 +262,8 @@ const Register = () => {
               <FilledInput
                 id='filled-adornment-password'
                 type={showPassword ? "text" : "password"}
+                name='cpassword'
+                onChange={handleOnChange}
                 endAdornment={
                   <InputAdornment position='end'>
                     <IconButton
