@@ -13,20 +13,33 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import React from "react";
+import React, { useState } from "react";
 
-const Signin = () => {
-  const [showPassword, setShowPassword] = React.useState(false);
+const Register = () => {
+  const [form, setForm] = useState();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-  const handleOnSubmit = () => {};
+  const handleOnChange = (e) => {
+    e.preventDefault();
+
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log(form);
+  };
   return (
     <div>
-      <Box
+      {/* <Box
         className='bg-gradient-to-r from-indigo-500 to-blue-500 '
         sx={{ height: "100dvh" }}
       >
@@ -48,12 +61,14 @@ const Signin = () => {
             <TextField
               id='standard-basic'
               label='User Name'
+              name='Username'
               variant='filled'
               sx={{
                 background: "white",
                 width: "25ch",
                 borderRadius: ".3rem",
               }}
+              onChange={handleOnChange}
             />
             <FormControl
               sx={{
@@ -82,12 +97,15 @@ const Signin = () => {
                   </InputAdornment>
                 }
                 label='Password'
+                name='password'
+                onChange={handleOnChange}
               />
             </FormControl>
 
             <Button
               variant='contained'
               sx={{ backgroundColor: "#002966" }}
+              type='submit'
             >
               Login
             </Button>
@@ -98,7 +116,7 @@ const Signin = () => {
           >
             Create A New{" "}
             <Link
-              href='#'
+              href='/register'
               sx={{ color: "#002966" }}
             >
               Accout
@@ -110,16 +128,17 @@ const Signin = () => {
           >
             | Forget
             <Link
-              href='#'
+              href='/forgetPassword'
               sx={{ color: "#002966" }}
             >
               Password ?
             </Link>
           </Typography>
         </form>
-      </Box>
+      </Box> */}
+      hello world
     </div>
   );
 };
 
-export default Signin;
+export default Register;
